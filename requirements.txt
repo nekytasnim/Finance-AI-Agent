@@ -6,3 +6,4 @@ transformers
 langchain-huggingface
 streamlit
 marker-pdf
+protobuf==3.20.*
