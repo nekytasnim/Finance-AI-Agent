@@ -5,3 +5,4 @@ pandas
 transformers
 langchain-huggingface
 streamlit
+marker-pdf[full]
