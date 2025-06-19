@@ -7,3 +7,4 @@ langchain-huggingface
 streamlit
 marker-pdf
 protobuf==3.20.*
+sqlite3 >= 3.35.0
