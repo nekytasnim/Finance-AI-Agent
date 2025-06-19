@@ -6,8 +6,6 @@ import os
 from langchain_ollama import OllamaEmbeddings
 from langchain_chroma import Chroma
 from langchain_core.documents import Document
-from chromadb.config import Settings
-from chromadb import Client
 
 config = {"use_llm": True,
           "gemini_api_key": os.getenv("GOOGLE_API_KEY")}
@@ -29,12 +27,10 @@ doc_1 = Document(page_content=doc_text, id=1)
 doc_2 = Document(page_content=image_text, id=2)
 documents = [doc_1, doc_2]
 uuids = [str(uuid4()) for _ in range(len(documents))]
-        
-client = Client(Settings(chroma_db_impl="duckdb+parquet", persist_directory=db_location))
+
 vector_store = Chroma(
     collection_name="bank_statement",
-    #persist_directory=db_location,
-    client=client,
+    persist_directory=db_location,
     embedding_function=embeddings
 )
 
