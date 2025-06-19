@@ -6,6 +6,7 @@ import os
 from langchain_ollama import OllamaEmbeddings
 from langchain_chroma import Chroma
 from langchain_core.documents import Document
+from chromadb.config import Settings
 
 config = {"use_llm": True,
           "gemini_api_key": os.getenv("GOOGLE_API_KEY")}
@@ -31,7 +32,8 @@ uuids = [str(uuid4()) for _ in range(len(documents))]
 vector_store = Chroma(
     collection_name="bank_statement",
     persist_directory=db_location,
-    embedding_function=embeddings
+    embedding_function=embeddings,
+    client_settings=Settings(allow_reset=True, chroma_db_impl="duckdb")
 )
 
 if not os.path.exists(db_location):
