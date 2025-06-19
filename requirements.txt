@@ -1,0 +1,7 @@
+langchain
+langchain-ollama
+langchain-chroma
+pandas
+transformers
+langchain-huggingface
+streamlit
