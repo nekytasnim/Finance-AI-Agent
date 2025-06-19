@@ -1,8 +1,5 @@
 import streamlit as st
-from main import ask_agent
-__import__('pysqlite3')
-import sys
-sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')  
+from main import ask_agent  
 
 st.set_page_config(page_title="Finance AI Agent 💼", layout="wide")
 st.title("📊 Finance AI Agent")
