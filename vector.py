@@ -30,7 +30,7 @@ uuids = [str(uuid4()) for _ in range(len(documents))]
 
 vector_store = Chroma.from_documents(
     documents=documents,
-    embedding_function=embeddings
+    embedding=embeddings
 )
 
 vector_store.add_documents(documents=documents, ids=uuids)
