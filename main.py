@@ -45,3 +45,8 @@ def ask_agent(question: str) -> str:
     })
     
     return response.content.strip()
+
+if __name__ == "__main__":
+    question = input("Ask a question: ")
+    answer = ask_agent(question)
+    print("\n📢 Agent's Answer:\n", answer)

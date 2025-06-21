@@ -6,13 +6,12 @@ st.title("📊 Finance AI Agent")
 
 user_query = st.text_input("Ask your financial question:")
 
-if __name__ == "__main__":
-    if user_query:
-        with st.spinner("Processing..."):
-            answer = ask_agent(user_query)
+if user_query:
+    with st.spinner("Processing..."):
+        answer = ask_agent(user_query)
     
-    else:
-        answer = "Please enter a question to get started."
+else:
+    answer = "Please enter a question to get started."
 
     st.subheader("💡 Agent's Answer")
     st.write(answer)
