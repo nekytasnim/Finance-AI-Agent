@@ -5,5 +5,5 @@ pandas
 transformers
 langchain-huggingface
 langchain-community
-marker-pdf
+marker-pdf[full]
 protobuf==3.20.*
