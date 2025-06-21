@@ -4,5 +4,6 @@ langchain-chroma
 pandas
 transformers
 langchain-huggingface
+langchain-community
 marker-pdf
 protobuf==3.20.*
