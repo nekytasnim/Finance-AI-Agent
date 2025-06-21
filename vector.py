@@ -4,7 +4,7 @@ from marker.models import create_model_dict
 from marker.output import text_from_rendered
 import os
 from langchain_ollama import OllamaEmbeddings
-from langchain_chroma import Chroma
+from langchain_community.vectorstores import Chroma
 from langchain_core.documents import Document
 
 config = {"use_llm": True,
