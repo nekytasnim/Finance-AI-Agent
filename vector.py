@@ -4,7 +4,7 @@ from marker.models import create_model_dict
 from marker.output import text_from_rendered
 import os
 from langchain_ollama import OllamaEmbeddings
-from langchain.vectorstores import Chroma
+from langchain_chroma import Chroma
 from langchain_core.documents import Document
 
 config = {"use_llm": True,
@@ -28,13 +28,12 @@ doc_2 = Document(page_content=image_text, id=2)
 documents = [doc_1, doc_2]
 uuids = [str(uuid4()) for _ in range(len(documents))]
 
-vector_store = Chroma.from_documents(
+vector_store = Chroma(
     collection_name="bank_statement",
     embedding_function=embeddings
 )
 
 if not os.path.exists(db_location):
     vector_store.add_documents(documents=documents, ids=uuids)
-    vector_store.persist()
 
 retriever = vector_store.as_retriever(search_type="mmr")
