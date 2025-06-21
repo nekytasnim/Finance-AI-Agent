@@ -28,12 +28,11 @@ doc_2 = Document(page_content=image_text, id=2)
 documents = [doc_1, doc_2]
 uuids = [str(uuid4()) for _ in range(len(documents))]
 
-vector_store = Chroma(
-    collection_name="bank_statement",
+vector_store = Chroma.from_documents(
+    documents=documents,
     embedding_function=embeddings
 )
 
-if not os.path.exists(db_location):
-    vector_store.add_documents(documents=documents, ids=uuids)
+vector_store.add_documents(documents=documents, ids=uuids)
 
 retriever = vector_store.as_retriever(search_type="mmr")
