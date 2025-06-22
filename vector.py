@@ -9,12 +9,12 @@ from langchain_core.documents import Document
 import streamlit as st
 
 
-config = {"use_llm": True,
-          "gemini_api_key": st.secrets["GOOGLE_API_KEY"]}
+'''config = {"use_llm": True,
+          "gemini_api_key": st.secrets["GOOGLE_API_KEY"]}'''
 
 converter = PdfConverter(
     artifact_dict=create_model_dict(),
-    config=config
+    #config=config
 )
 rendered_pdf = converter("batch1-0483.pdf")
 doc_text, _, _ = text_from_rendered(rendered_pdf)
