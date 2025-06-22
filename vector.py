@@ -10,7 +10,7 @@ import streamlit as st
 
 
 config = {"use_llm": True,
-          "gemini_api_key": os.getenv("GOOGLE_API_KEY"),}
+          "gemini_api_key": st.secrets["GOOGLE_API_KEY"]}
 
 converter = PdfConverter(
     artifact_dict=create_model_dict(),
