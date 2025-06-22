@@ -1,19 +1,29 @@
-import streamlit as st
 from main import ask_agent  
+import gradio as gr
 
-st.set_page_config(page_title="Finance AI Agent 💼", layout="wide")
-st.title("📊 Finance AI Agent")
+def chat_fn(message, history):
+    try:
+        answer = ask_agent(message)
+        return answer
+    except Exception as e:
+        return f"❌ Error: {e}"
 
-user_query = st.text_input("Ask your question:")
+demo = gr.ChatInterface(
+    fn=chat_fn,  # or use chat_with_context if you want to show context
+    title="📊 Finance AI Agent",
+    description="Ask questions about your company's financial data!",
+    theme="soft",
+    examples=[
+        "What is the date of issue for invoice 69638281?",
+        "Who is the seller listed in invoice 37575831?",
+        "What was the nitem purchased in invoice 69638281?"
+    ],
+    submit_btn="➡️ Submit",
+    chatbot=gr.Chatbot(show_copy_button=True),
+)
 
-if user_query:
-    with st.spinner("Processing..."):
-        answer = ask_agent(user_query)
-else:
-    answer = "Please enter a question to get started."
-
-st.subheader("💡 Agent's Answer")
-st.write(answer)
+if __name__ == "__main__":
+    demo.launch(share=True)
 
 
 

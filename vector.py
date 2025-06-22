@@ -6,11 +6,13 @@ import os
 from langchain_ollama import OllamaEmbeddings
 from langchain_community.vectorstores import Chroma
 from langchain_core.documents import Document
-import streamlit as st
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
-'''config = {"use_llm": True,
-          "gemini_api_key": st.secrets["GOOGLE_API_KEY"]}'''
+config = {"use_llm": True,
+          "gemini_api_key": os.getenv("GOOGLE_API_KEY"),}
 
 converter = PdfConverter(
     artifact_dict=create_model_dict(),
